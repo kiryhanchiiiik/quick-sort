@@ -4,10 +4,18 @@ const quickSort = (arr) => {
   if (arr.length <= 1) return arr;
 
   const pivot = arr[0];
-  const less = arr.slice(1).filter((el) => el <= pivot);
-  const greater = arr.slice(1).filter((el) => el > pivot);
+  const less = [];
+  const greater = [];
 
-  return quickSort(less).concat(pivot, quickSort(greater));
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] < pivot) {
+      less.push(arr[i]);
+    } else {
+      greater.push(arr[i]);
+    }
+  }
+
+  return [...quickSort(less), pivot, ...quickSort(greater)];
 };
 
 console.log(quickSort(arr));
