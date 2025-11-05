@@ -1,4 +1,8 @@
-const arr = [15, 9, 7, 33, 10, 25];
+// const arr = [15, 9, 7, 33, 10, 25];
+
+const arr = Array.from({ length: 100000 }, () =>
+  Math.floor(Math.random() * 100000)
+);
 
 const quickSort = (arr) => {
   if (arr.length <= 1) return arr;
@@ -18,4 +22,8 @@ const quickSort = (arr) => {
   return [...quickSort(less), pivot, ...quickSort(greater)];
 };
 
+console.time("quickSort");
+
 console.log(quickSort(arr));
+
+console.timeEnd("quickSort");
